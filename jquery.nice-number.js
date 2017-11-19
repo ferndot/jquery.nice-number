@@ -1,9 +1,11 @@
 (function ($) {
   $.fn.niceNumber = function(options) {
     var settings = $.extend({
-            buttonDecrement: '-',
-            buttonIncrement: "+",
-            buttonPosition: 'around'
+          autoSize: true,
+          autoSizeBuffer: 1,
+          buttonDecrement: '-',
+          buttonIncrement: "+",
+          buttonPosition: 'around'
         }, options);
 
     return this.each(function(){
@@ -70,12 +72,14 @@
       }
 
       // Nicely size input
-      $(currentInput).width($(currentInput).val().length+1+"ch");
-      $(currentInput).on('keyup input',function(){
-        $(currentInput).animate({
-          'width': $(currentInput).val().length+1+"ch"
-        }, 200);
-      });
+      if (settings.autoSize) {
+        $(currentInput).width($(currentInput).val().length+settings.autoSizeBuffer+"ch");
+        $(currentInput).on('keyup input',function(){
+          $(currentInput).animate({
+            'width': $(currentInput).val().length+settings.autoSizeBuffer+"ch"
+          }, 200);
+        });
+      }
     });
   };
 

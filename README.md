@@ -25,6 +25,8 @@ configuration options.
 #### Currently supported options
 Name | Permitted values | Description | Default value
 ---- | ---------------- | ----------- | -------------
+autoSize | boolean | Enables or disables automatic input sizing to fit content | `true`
+autoSizeBuffer | number | The number of extra character widths that are added to the element's content size calculation when automatically sizing | `1`
 buttonDecrement | jQuery element, HTML element, HTML string, or plain string | The contents of the decrement button | `'-'`
 buttonIncrement | jQuery element, HTML element, HTML string, or plain string | The contents of the increment button | `'+'`
 buttonPosition | `'around'`, `'left'`, or `'right'` | The positions of the control buttons | `'around'`
