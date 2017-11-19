@@ -1,0 +1,26 @@
+{
+  "name": "jquery.nice-number",
+  "version": "1.0.0",
+  "description": "A tiny jQuery plugin for styling HTML number inputs",
+  "main": "jquery.nice-number.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshua-s/jquery.nice-number.git"
+  },
+  "keywords": [
+    "jquery",
+    "html5",
+    "input",
+    "number",
+    "css"
+  ],
+  "author": "Joshua Smith",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/joshua-s/jquery.nice-number/issues"
+  },
+  "homepage": "https://github.com/joshua-s/jquery.nice-number#readme"
+}

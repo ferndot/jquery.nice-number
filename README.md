@@ -4,10 +4,17 @@ easily-styled format.
 
 ## Usage
 ### Prerequisites
+Download the project files or install it using NPM, Yarn, etc...
+```sh
+$ npm install jquery.nice-number --save
+$ yarn add jquery.nice-number
+```
+
 Include the plugin files in your source.
+> Note: the path will need to be changed if you downloaded or moved the files.
 ```html
-<link rel="stylesheet" href="jquery.nice-number/jquery.nice-number.css">
-<script src="jquery.nice-number/jquery.nice-number.js"></script>
+<link rel="stylesheet" href="node_modules/jquery.nice-number/jquery.nice-number.css">
+<script src="node_modules/jquery.nice-number/jquery.nice-number.js"></script>
 ```
 
 ### Basic usage
