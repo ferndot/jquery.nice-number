@@ -1,6 +1,6 @@
 {
   "name": "jquery.nice-number",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A tiny jQuery plugin for styling HTML number inputs",
   "main": "jquery.nice-number.js",
   "scripts": {
@@ -12,6 +12,7 @@
   },
   "keywords": [
     "jquery",
+    "jquery-plugin",
     "html5",
     "input",
     "number",
