@@ -22,6 +22,7 @@
 
       // Generate buttons
       var $minusButton = $('<button/>')
+        .attr('type', 'button')
         .html(settings.buttonDecrement)
         .on('mousedown mouseup mouseleave', function(event){
           changeInterval(event.type, interval, function(){
@@ -37,6 +38,7 @@
         });
 
       var $plusButton = $('<button/>')
+        .attr('type', 'button')
         .html(settings.buttonIncrement)
         .on('mousedown mouseup mouseleave', function(event){
           changeInterval(event.type, interval, function(){
