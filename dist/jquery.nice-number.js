@@ -1,15 +1,32 @@
 (function ($) {
   $.fn.niceNumber = function(options) {
     var settings = $.extend({
-          autoSize: true,
-          autoSizeBuffer: 1,
-          buttonDecrement: '-',
-          buttonIncrement: "+",
-          buttonPosition: 'around'
-        }, options);
+      autoSize: true,
+      autoSizeBuffer: 1,
+      buttonDecrement: '-',
+      buttonIncrement: "+",
+      buttonPosition: 'around'
+    }, options);
 
     return this.each(function(){
       var currentInput = this;
+      var attrMax = null;
+      var attrMin = null;
+
+      // Handle max and min values
+      if (
+        typeof $(currentInput).attr('max') !== typeof undefined
+        && $(currentInput).attr('max') !== false
+      ) {
+        attrMax = parseFloat($(currentInput).attr('max'));
+      }
+
+      if (
+        typeof $(currentInput).attr('min') !== typeof undefined
+        && $(currentInput).attr('min') !== false
+      ) {
+        attrMin = parseFloat($(currentInput).attr('min'));
+      }
 
       // Generate container
       var $inputContainer = $('<div/>',{
@@ -26,13 +43,19 @@
         .html(settings.buttonDecrement)
         .on('mousedown mouseup mouseleave', function(event){
           changeInterval(event.type, interval, function(){
-            currentInput.value--;
+            if (
+              attrMin == null
+              || attrMin < parseFloat(currentInput.value)
+            ) {
+              currentInput.value--;
+            }
           });
 
           // Trigger the input event here to avoid event spam
-          if (event.type == 'mouseup'
-              || event.type == 'mouseleave') {
-
+          if (
+            event.type == 'mouseup'
+            || event.type == 'mouseleave'
+          ) {
             $(currentInput).trigger('input');
           }
         });
@@ -42,13 +65,19 @@
         .html(settings.buttonIncrement)
         .on('mousedown mouseup mouseleave', function(event){
           changeInterval(event.type, interval, function(){
-            currentInput.value++;
+            if (
+              attrMax == null
+              || attrMax > parseFloat(currentInput.value)
+            ) {
+              currentInput.value++;
+            }
           });
 
           // Trigger the input event here to avoid event spam
-          if (event.type == 'mouseup'
-              || event.type == 'mouseleave') {
-
+          if (
+            event.type == 'mouseup'
+            || event.type == 'mouseleave'
+          ) {
             $(currentInput).trigger('input');
           }
         });
@@ -75,7 +104,9 @@
 
       // Nicely size input
       if (settings.autoSize) {
-        $(currentInput).width($(currentInput).val().length+settings.autoSizeBuffer+"ch");
+        $(currentInput).width(
+          $(currentInput).val().length+settings.autoSizeBuffer+"ch"
+        );
         $(currentInput).on('keyup input',function(){
           $(currentInput).animate({
             'width': $(currentInput).val().length+settings.autoSizeBuffer+"ch"
