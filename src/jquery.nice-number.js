@@ -10,6 +10,15 @@
 
     return this.each(function(){
       var currentInput = this;
+      var attrMax = null;
+      var attrMin = null;
+      if (typeof $(currentInput).attr('max') !== typeof undefined && $(currentInput).attr('max') !== false) {
+        attrMax = $(currentInput).attr('max');
+      }
+      if (typeof $(currentInput).attr('min') !== typeof undefined && $(currentInput).attr('min') !== false) {
+        attrMin = $(currentInput).attr('min');
+      }
+        
 
       // Generate container
       var $inputContainer = $('<div/>',{
@@ -26,7 +35,9 @@
         .html(settings.buttonDecrement)
         .on('mousedown mouseup mouseleave', function(event){
           changeInterval(event.type, interval, function(){
-            currentInput.value--;
+            if (attrMin == null || attrMin < currentInput.value) {
+              currentInput.value--;
+            }
           });
 
           // Trigger the input event here to avoid event spam
@@ -42,7 +53,9 @@
         .html(settings.buttonIncrement)
         .on('mousedown mouseup mouseleave', function(event){
           changeInterval(event.type, interval, function(){
-            currentInput.value++;
+            if (attrMax == null || attrMax > currentInput.value) {
+              currentInput.value++;
+            }
           });
 
           // Trigger the input event here to avoid event spam
