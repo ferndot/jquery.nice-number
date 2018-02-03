@@ -9,23 +9,32 @@
     }, options);
 
     return this.each(function(){
-      var currentInput = this;
-      var attrMax = null;
-      var attrMin = null;
+      var currentInput = this,
+          $currentInput = $(currentInput),
+          attrMax = null,
+          attrMin = null;
 
       // Handle max and min values
       if (
-        typeof $(currentInput).attr('max') !== typeof undefined
-        && $(currentInput).attr('max') !== false
+        typeof $currentInput.attr('max') !== typeof undefined
+        && $currentInput.attr('max') !== false
       ) {
-        attrMax = parseFloat($(currentInput).attr('max'));
+        attrMax = parseFloat($currentInput.attr('max'));
       }
 
       if (
-        typeof $(currentInput).attr('min') !== typeof undefined
-        && $(currentInput).attr('min') !== false
+        typeof $currentInput.attr('min') !== typeof undefined
+        && $currentInput.attr('min') !== false
       ) {
-        attrMin = parseFloat($(currentInput).attr('min'));
+        attrMin = parseFloat($currentInput.attr('min'));
+      }
+
+      // Fix issue with initial value being < min
+      if (
+        attrMin
+        && !currentInput.value
+      ) {
+        $currentInput.val(attrMin);
       }
 
       // Generate container
@@ -56,7 +65,7 @@
             event.type == 'mouseup'
             || event.type == 'mouseleave'
           ) {
-            $(currentInput).trigger('input');
+            $currentInput.trigger('input');
           }
         });
 
@@ -78,7 +87,7 @@
             event.type == 'mouseup'
             || event.type == 'mouseleave'
           ) {
-            $(currentInput).trigger('input');
+            $currentInput.trigger('input');
           }
         });
 
@@ -87,29 +96,29 @@
         case 'left':
           $minusButton.appendTo($inputContainer);
           $plusButton.appendTo($inputContainer);
-          $(currentInput).appendTo($inputContainer);
+          $currentInput.appendTo($inputContainer);
           break;
         case 'right':
-          $(currentInput).appendTo($inputContainer);
+          $currentInput.appendTo($inputContainer);
           $minusButton.appendTo($inputContainer);
           $plusButton.appendTo($inputContainer);
           break;
         case 'around':
         default:
           $minusButton.appendTo($inputContainer);
-          $(currentInput).appendTo($inputContainer);
+          $currentInput.appendTo($inputContainer);
           $plusButton.appendTo($inputContainer);
           break;
       }
 
       // Nicely size input
       if (settings.autoSize) {
-        $(currentInput).width(
-          $(currentInput).val().length+settings.autoSizeBuffer+"ch"
+        $currentInput.width(
+          $currentInput.val().length+settings.autoSizeBuffer+"ch"
         );
-        $(currentInput).on('keyup input',function(){
-          $(currentInput).animate({
-            'width': $(currentInput).val().length+settings.autoSizeBuffer+"ch"
+        $currentInput.on('keyup input',function(){
+          $currentInput.animate({
+            'width': $currentInput.val().length+settings.autoSizeBuffer+"ch"
           }, 200);
         });
       }
