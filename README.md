@@ -42,10 +42,10 @@ buttonPosition | `'around'`, `'left'`, or `'right'` | The positions of the contr
 ### Building
 Install the project dependencies
 ```sh
-$ yarn install
+$ yarn
 ```
 
 Build the project
 ```sh
-$ gulp
+$ yarn gulp
 ```

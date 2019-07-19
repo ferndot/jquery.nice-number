@@ -7,14 +7,10 @@ var pump = require('pump');
 gulp.task('default', function (cb) {
   pump(
     [
-      gulp.src('src/**/*'),
-      gulp.dest('dist'),
       gulp.src('src/**/*.js'),
       uglify(),
-      rename(function (path) {
-        path.basename += ".min";
-      }),
       gulp.dest('dist'),
+
       gulp.src('src/**/*.css'),
       uglifycss({
         "maxLineLen": 80,
@@ -23,6 +19,9 @@ gulp.task('default', function (cb) {
       rename(function (path) {
         path.basename += ".min";
       }),
+      gulp.dest('dist'),
+
+      gulp.src('src/**/*'),
       gulp.dest('dist'),
     ],
     cb
