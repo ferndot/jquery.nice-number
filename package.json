@@ -25,13 +25,13 @@
   },
   "homepage": "https://github.com/joshua-s/jquery.nice-number#readme",
   "dependencies": {
-    "jquery": "^3.3.1"
+    "jquery": "^3.4.1"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^3.0.0",
-    "gulp-uglifycss": "^1.0.9",
-    "pump": "^2.0.0"
+    "gulp": "^4.0.2",
+    "gulp-rename": "^1.4.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-uglifycss": "^1.1.0",
+    "pump": "^3.0.0"
   }
 }
