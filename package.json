@@ -33,5 +33,6 @@
     "gulp-uglify": "^3.0.2",
     "gulp-uglifycss": "^1.1.0",
     "pump": "^3.0.0"
-  }
+  },
+  "publishConfig": { "registry": "https://npm.pkg.github.com/@joshua-s" }
 }
