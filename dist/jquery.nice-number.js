@@ -14,6 +14,9 @@
           attrMax = null,
           attrMin = null;
 
+      // Skip already initialized input
+      if ($currentInput.attr('data-nice-number-initialized')) return
+
       // Handle max and min values
       if (
         typeof $currentInput.attr('max') !== typeof undefined
@@ -90,6 +93,9 @@
             $currentInput.trigger('input');
           }
         });
+
+      // Remember that we have initialized this input
+      $currentInput.attr('data-nice-number-initialized', true);
 
       // Append elements
       switch (settings.buttonPosition) {
