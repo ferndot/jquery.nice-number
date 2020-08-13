@@ -6,6 +6,13 @@
       buttonDecrement: '-',
       buttonIncrement: "+",
       buttonPosition: 'around'
+      useCallbacks: false,
+      onIncr: function($input, amount) {
+        return;
+      },
+      onDecr: function($input, amount) {
+        return;
+      }
     }, options);
 
     return this.each(function(){
@@ -62,6 +69,7 @@
               currentInput.value--;
             }
           });
+          if (settings.useCallbacks) settings.onDecr($currentInput, currentInput.value);
 
           // Trigger the input event here to avoid event spam
           if (
@@ -84,6 +92,7 @@
               currentInput.value++;
             }
           });
+          if (settings.useCallbacks) settings.onIncr($currentInput, currentInput.value);
 
           // Trigger the input event here to avoid event spam
           if (
