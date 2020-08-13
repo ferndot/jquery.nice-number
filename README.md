@@ -56,6 +56,8 @@ configuration options.
 
 **Callback Examples**
 
+Passed arguments are `$currentInput`: the selected input in a jQuery object, the new amount, and the niceNumber settings.
+
 ```js
 $('input[type="number"]').niceNumber({
 	onIncr: function ($currentInput, amount, settings) {
