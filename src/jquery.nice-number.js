@@ -65,19 +65,19 @@
 							attrMin < parseFloat(currentInput.value)
 						) {
 							currentInput.value--;
+							if (settings.onDecr) {
+								settings.onDecr(
+									$currentInput,
+									currentInput.value,
+									settings
+								);
+							}
 						}
 					});
 
 					// Trigger the input event here to avoid event spam
 					if (event.type == 'mouseup' || event.type == 'mouseleave') {
 						$currentInput.trigger('input');
-						if (settings.onDecr) {
-							settings.onDecr(
-								$currentInput,
-								currentInput.value,
-								settings
-							);
-						}
 					}
 				});
 
@@ -91,19 +91,19 @@
 							attrMax > parseFloat(currentInput.value)
 						) {
 							currentInput.value++;
+							if (settings.onIncr) {
+								settings.onIncr(
+									$currentInput,
+									currentInput.value,
+									settings
+								);
+							}
 						}
 					});
 
 					// Trigger the input event here to avoid event spam
 					if (event.type == 'mouseup' || event.type == 'mouseleave') {
 						$currentInput.trigger('input');
-						if (settings.onIncr) {
-							settings.onIncr(
-								$currentInput,
-								currentInput.value,
-								settings
-							);
-						}
 					}
 				});
 
