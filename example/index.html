@@ -1,50 +1,97 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>jQuery Nice Number Example</title>
+	<head>
+		<title>jQuery Nice Number Example</title>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- jQuery Nice Number CSS -->
-  <link rel="stylesheet" href="../dist/jquery.nice-number.min.css">
-</head>
-<body>
+		<!-- jQuery Nice Number CSS -->
+		<link rel="stylesheet" href="../dist/jquery.nice-number.min.css" />
+	</head>
+	<body>
+		<h1>
+			A Very Unpolished Collection of Examples
+		</h1>
 
-  <h1>
-    A Very Unpolished Collection of Examples
-  </h1>
+		<div>
+			<h2>
+				Generic input
+			</h2>
+			<code>
+				&lt;input type="number"&gt;
+			</code>
+			<br /><br />
+			<input type="number" class="number" />
+		</div>
 
-  <div>
-    <h2>
-      Generic input
-    </h2>
-    <code>
-      &lt;input type="number"&gt;
-    </code>
-    <br><br>
-    <input type="number">
-  </div>
+		<div>
+			<h2>Input with <code>min</code> and <code>max</code> set</h2>
+			<code>
+				&lt;input type="number" min="5" max="10"&gt;
+			</code>
+			<br /><br />
+			<input type="number" min="5" max="10" class="number" />
+		</div>
+		<div>
+			<h2>
+				Input with callback
+			</h2>
+			<h3>
+				Callbacks will respect <code>min</code> and
+				<code>max</code> attributes.
+			</h3>
+			<pre>
+  <code>
+    &lt;input type="number" id="callback"&gt;
+    &lt;output id="callbackOutput"&gt;&lt;output&gt;
+  </code>
+</pre>
+			<pre>
+  <code>
+var incremented = 1,
+    decremented = 1;
+$('#callback').niceNumber({
+  onIncr: function ($currentInput, amount) {
+    $('#callbackOutput').text(
+      'Incremented ' + incremented++ + ' Times.',
+    );
+  },
+  onDecr: function ($currentInput, amount) {
+    $('#callbackOutput').text(
+      'Decremented ' + decremented++ + ' Times.',
+    );
+  },
+});
+  </code>
+</pre>
+			<br />
+			<input type="number" id="callback" />
+			<output id="callbackOutput"></output>
+		</div>
+		<!-- Dependencies -->
+		<script src="../node_modules/jquery/dist/jquery.min.js"></script>
 
-  <div>
-    <h2>
-      Input with min and max set
-    </h2>
-    <code>
-      &lt;input type="number" min="5" max="10"&gt;
-    </code>
-    <br><br>
-    <input type="number" min="5" max="10">
-  </div>
-
-  <!-- Dependencies -->
-  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-
-  <!-- jQuery Nice Number JS -->
-  <script src="../dist/jquery.nice-number.min.js"></script>
-  <script>
-    $('input[type="number"]').niceNumber();
-  </script>
-
-</body>
+		<!-- jQuery Nice Number JS -->
+		<script src="../dist/jquery.nice-number.js"></script>
+		<script>
+			$('.number').niceNumber();
+		</script>
+		<script>
+			var incremented = 1,
+				decremented = 1;
+			$('#callback').niceNumber({
+				onIncr: function ($currentInput, amount) {
+					$('#callbackOutput').text(
+						'Incremented ' + incremented++ + ' Times.',
+					);
+				},
+				onDecr: function ($currentInput, amount) {
+					$('#callbackOutput').text(
+						'Decremented ' + decremented++ + ' Times.',
+					);
+				},
+			});
+		</script>
+	</body>
 </html>
