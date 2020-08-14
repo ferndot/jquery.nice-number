@@ -1,21 +1,15 @@
 (function ($) {
 	$.fn.niceNumber = function (options) {
-		var defaults = {
-			autoSize: true,
-			autoSizeBuffer: 1,
-			buttonDecrement: '-',
-			buttonIncrement: '+',
-			buttonPosition: 'around',
-			onIncr: false,
-			onDecr: false,
-		};
-		/**
-      callbackFunction
-      @param {$input} currentInput - the input running the callback
-      @param {number} amount - the amount after increase/decrease
-      @param {object} settings - the passed niceNumber settings
-     */
-		var settings = $.extend(defaults, options);
+		var settings = $.extend(
+			{
+				autoSize: true,
+				autoSizeBuffer: 1,
+				buttonDecrement: '-',
+				buttonIncrement: '+',
+				buttonPosition: 'around',
+			},
+			options
+		);
 
 		return this.each(function () {
 			var currentInput = this,
@@ -65,13 +59,6 @@
 							attrMin < parseFloat(currentInput.value)
 						) {
 							currentInput.value--;
-							if (settings.onDecr) {
-								settings.onDecr(
-									$currentInput,
-									currentInput.value,
-									settings
-								);
-							}
 						}
 					});
 
@@ -91,13 +78,6 @@
 							attrMax > parseFloat(currentInput.value)
 						) {
 							currentInput.value++;
-							if (settings.onIncr) {
-								settings.onIncr(
-									$currentInput,
-									currentInput.value,
-									settings
-								);
-							}
 						}
 					});
 
