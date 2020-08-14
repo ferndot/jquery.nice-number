@@ -28,7 +28,7 @@ gulp.task('default', function (cb) {
 	);
 });
 
-var { src, dest, series, parallel } = require('gulp');
+var { src, dest, series, parallel, watch } = require('gulp');
 var paths = {
 	src: 'src/**/*',
 	js: 'src/**/*.js',
@@ -48,13 +48,13 @@ copy.description =
 	'Copies src folder directly to the dist folder, no mutations';
 
 function css() {
+	var options = {
+		maxLineLen: 80,
+		uglyComments: true,
+	};
+
 	return src(paths.css)
-		.pipe(
-			uglifycss({
-				maxLineLen: 80,
-				uglyComments: true,
-			}),
-		)
+		.pipe(uglifycss(options))
 		.pipe(rename(addMin))
 		.pipe(dest(paths.dist));
 }
@@ -63,10 +63,20 @@ css.description =
 	'Mutates the css files, including minifying, and adding ".min" to the basename';
 
 function js() {
+	var options = {
+		compress: {
+			hoist_funs: false,
+		},
+	};
 	return src(paths.js)
-		.pipe(uglify())
+		.pipe(uglify(options))
 		.pipe(rename(addMin))
 		.pipe(dest(paths.dist));
+}
+
+function source(done) {
+	watch(paths.src, parallel(copy, css, js));
+	done();
 }
 
 js.description =
@@ -76,4 +86,5 @@ exports.copy = copy;
 exports.css = css;
 exports.js = js;
 
-exports.build = parallel(css, js, copy);
+exports.build = parallel(copy, css, js);
+exports.dev = series(exports.build, source);
