@@ -81,6 +81,7 @@ $('#callback').niceNumber({
 			var incremented = 1,
 				decremented = 1;
 			$('#callback').niceNumber({
+				autoSizeBuffer: 2,
 				onIncr: function ($currentInput, amount) {
 					$('#callbackOutput').text(
 						'Incremented ' + incremented++ + ' Times.',
