@@ -85,3 +85,19 @@ Build the project
 ```sh
 $ yarn gulp
 ```
+
+Or individually
+
+```sh
+$ yarn gulp css
+
+$ yarn gulp js
+
+$ yarn gulp copy # copies the contents of the src folder to the dist folder
+```
+
+If you are developing on the project, you can use
+
+```sh
+$ yarn gulp dev # runs default, then copy, css, js on save of any src file
+```
