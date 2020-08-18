@@ -60,15 +60,17 @@
 				.html(settings.buttonDecrement)
 				.on('mousedown mouseup mouseleave', function (event) {
 					changeInterval(event.type, interval, function () {
+						var currentValue = parseFloat($currentInput.val() || 0);
 						if (
 							attrMin == null ||
-							attrMin < parseFloat(currentInput.value)
+							attrMin < currentValue
 						) {
-							currentInput.value--;
+							var newValue = currentValue - 1;
+							$currentInput.val(newValue);
 							if (settings.onDecr) {
 								settings.onDecr(
 									$currentInput,
-									currentInput.value,
+									newValue,
 									settings
 								);
 							}
@@ -86,15 +88,17 @@
 				.html(settings.buttonIncrement)
 				.on('mousedown mouseup mouseleave', function (event) {
 					changeInterval(event.type, interval, function () {
+						var currentValue = parseFloat($currentInput.val() || 0);
 						if (
 							attrMax == null ||
-							attrMax > parseFloat(currentInput.value)
+							attrMax > currentValue
 						) {
-							currentInput.value++;
+							var newValue = currentValue + 1;
+							$currentInput.val(newValue);
 							if (settings.onIncr) {
 								settings.onIncr(
 									$currentInput,
-									currentInput.value,
+									newValue,
 									settings
 								);
 							}

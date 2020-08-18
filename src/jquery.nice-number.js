@@ -60,10 +60,10 @@
 				.html(settings.buttonDecrement)
 				.on('mousedown mouseup mouseleave', function (event) {
 					changeInterval(event.type, interval, function () {
-						var currentValue = $currentInput.val();
+						var currentValue = parseFloat($currentInput.val() || 0);
 						if (
 							attrMin == null ||
-							attrMin < parseFloat(currentValue)
+							attrMin < currentValue
 						) {
 							var newValue = currentValue - 1;
 							$currentInput.val(newValue);
@@ -88,10 +88,10 @@
 				.html(settings.buttonIncrement)
 				.on('mousedown mouseup mouseleave', function (event) {
 					changeInterval(event.type, interval, function () {
-						var currentValue = $currentInput.val();
+						var currentValue = parseFloat($currentInput.val() || 0);
 						if (
 							attrMax == null ||
-							attrMax > parseFloat(currentValue)
+							attrMax > currentValue
 						) {
 							var newValue = currentValue + 1;
 							$currentInput.val(newValue);
