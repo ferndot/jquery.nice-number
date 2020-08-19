@@ -51,8 +51,8 @@ configuration options.
 | buttonDecrement | jQuery element, HTML element, HTML string, or plain string | The contents of the decrement button                                                                                    | `'-'`         |
 | buttonIncrement | jQuery element, HTML element, HTML string, or plain string | The contents of the increment button                                                                                    | `'+'`         |
 | buttonPosition  | `'around'`, `'left'`, or `'right'`                         | The positions of the control buttons                                                                                    | `'around'`    |
-| onIncrement     | false or function                                          | callback function to run on increment                                                                                   | false         |
 | onDecrement     | false or function                                          | callback function to run on decrement                                                                                   | false         |
+| onIncrement     | false or function                                          | callback function to run on increment                                                                                   | false         |
 
 **Callback Examples**
 
