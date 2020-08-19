@@ -6,8 +6,8 @@
 			buttonDecrement: '-',
 			buttonIncrement: '+',
 			buttonPosition: 'around',
-			onIncr: false,
-			onDecr: false,
+			onIncrement: false,
+			onDecrement: false,
 		};
 		/**
       callbackFunction
@@ -67,8 +67,8 @@
 						) {
 							var newValue = currentValue - 1;
 							$currentInput.val(newValue);
-							if (settings.onDecr) {
-								settings.onDecr(
+							if (settings.onDecrement) {
+								settings.onDecrement(
 									$currentInput,
 									newValue,
 									settings
@@ -95,8 +95,8 @@
 						) {
 							var newValue = currentValue + 1;
 							$currentInput.val(newValue);
-							if (settings.onIncr) {
-								settings.onIncr(
+							if (settings.onIncrement) {
+								settings.onIncrement(
 									$currentInput,
 									newValue,
 									settings

@@ -52,12 +52,12 @@
 var incremented = 1,
     decremented = 1;
 $('#callback').niceNumber({
-  onIncr: function ($currentInput, amount) {
+  onIncrement: function ($currentInput, amount) {
     $('#callbackOutput').text(
       'Incremented ' + incremented++ + ' Times.',
     );
   },
-  onDecr: function ($currentInput, amount) {
+  onDecrement: function ($currentInput, amount) {
     $('#callbackOutput').text(
       'Decremented ' + decremented++ + ' Times.',
     );
@@ -82,12 +82,12 @@ $('#callback').niceNumber({
 				decremented = 1;
 			$('#callback').niceNumber({
 				autoSizeBuffer: 2,
-				onIncr: function ($currentInput, amount) {
+				onIncrement: function ($currentInput, amount) {
 					$('#callbackOutput').text(
 						'Incremented ' + incremented++ + ' Times.',
 					);
 				},
-				onDecr: function ($currentInput, amount) {
+				onDecrement: function ($currentInput, amount) {
 					$('#callbackOutput').text(
 						'Decremented ' + decremented++ + ' Times.',
 					);
