@@ -6,8 +6,8 @@
 			buttonDecrement: '-',
 			buttonIncrement: '+',
 			buttonPosition: 'around',
-			onIncrement: false,
 			onDecrement: false,
+			onIncrement: false,
 		};
 		/**
       callbackFunction
