@@ -33,13 +33,66 @@
 			<br /><br />
 			<input type="number" min="5" max="10" class="number" />
 		</div>
+		<div>
+			<h2>
+				Input with callback
+			</h2>
+			<h3>
+				Callbacks will respect <code>min</code> and
+				<code>max</code> attributes.
+			</h3>
+			<pre>
+  <code>
+    &lt;input type="number" id="callback"&gt;
+    &lt;output id="callbackOutput"&gt;&lt;output&gt;
+  </code>
+</pre>
+			<pre>
+  <code>
+var incremented = 1,
+    decremented = 1;
+$('#callback').niceNumber({
+  onIncrement: function ($currentInput, amount) {
+    $('#callbackOutput').text(
+      'Incremented ' + incremented++ + ' Times.',
+    );
+  },
+  onDecrement: function ($currentInput, amount) {
+    $('#callbackOutput').text(
+      'Decremented ' + decremented++ + ' Times.',
+    );
+  },
+});
+  </code>
+</pre>
+			<br />
+			<input type="number" id="callback" />
+			<output id="callbackOutput"></output>
+		</div>
 		<!-- Dependencies -->
 		<script src="../node_modules/jquery/dist/jquery.min.js"></script>
 
 		<!-- jQuery Nice Number JS -->
-		<script src="../dist/jquery.nice-number.min.js"></script>
+		<script src="../dist/jquery.nice-number.js"></script>
 		<script>
 			$('.number').niceNumber();
+		</script>
+		<script>
+			var incremented = 1,
+				decremented = 1;
+			$('#callback').niceNumber({
+				autoSizeBuffer: 2,
+				onIncrement: function ($currentInput, amount) {
+					$('#callbackOutput').text(
+						'Incremented ' + incremented++ + ' Times.',
+					);
+				},
+				onDecrement: function ($currentInput, amount) {
+					$('#callbackOutput').text(
+						'Decremented ' + decremented++ + ' Times.',
+					);
+				},
+			});
 		</script>
 	</body>
 </html>
