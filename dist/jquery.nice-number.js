@@ -6,20 +6,23 @@
 			buttonDecrement: '-',
 			buttonIncrement: '+',
 			buttonPosition: 'around',
+
+			/**
+				callbackFunction
+				@param {$input} currentInput - the input running the callback
+				@param {number} amount - the amount after increase/decrease
+				@param {object} settings - the passed niceNumber settings
+			**/
 			onDecrement: false,
 			onIncrement: false,
 		};
-		/**
-      callbackFunction
-      @param {$input} currentInput - the input running the callback
-      @param {number} amount - the amount after increase/decrease
-      @param {object} settings - the passed niceNumber settings
-     */
 		var settings = $.extend(defaults, options);
 
 		return this.each(function () {
 			var currentInput = this,
 				$currentInput = $(currentInput),
+				maxValue = $currentInput.attr('max'),
+				minValue = $currentInput.attr('min'),
 				attrMax = null,
 				attrMin = null;
 
@@ -28,17 +31,17 @@
 
 			// Handle max and min values
 			if (
-				typeof $currentInput.attr('max') !== typeof undefined &&
-				$currentInput.attr('max') !== false
+				maxValue !== undefined &&
+				maxValue !== false
 			) {
-				attrMax = parseFloat($currentInput.attr('max'));
+				attrMax = parseFloat(maxValue);
 			}
 
 			if (
-				typeof $currentInput.attr('min') !== typeof undefined &&
-				$currentInput.attr('min') !== false
+				minValue !== undefined &&
+				minValue !== false
 			) {
-				attrMin = parseFloat($currentInput.attr('min'));
+				attrMin = parseFloat(minValue);
 			}
 
 			// Fix issue with initial value being < min
