@@ -43,8 +43,8 @@
 			</h3>
 			<pre>
   <code>
-    &lt;input type="number" id="callback"&gt;
-    &lt;output id="callbackOutput"&gt;&lt;output&gt;
+&lt;input type="number" id="callback"&gt;
+&lt;output id="callbackOutput"&gt;&lt;output&gt;
   </code>
 </pre>
 			<pre>
@@ -68,6 +68,15 @@ $('#callback').niceNumber({
 			<br />
 			<input type="number" id="callback" />
 			<output id="callbackOutput"></output>
+		</div>
+		<div>
+			<h2>Handles empty min or max attributes</h2>
+<pre>
+<code>
+&lt;input type="number" min="" max="" class="number" />
+</code>
+</pre>
+			<input type="number" min="" max="" class="number" />
 		</div>
 		<!-- Dependencies -->
 		<script src="../node_modules/jquery/dist/jquery.min.js"></script>
