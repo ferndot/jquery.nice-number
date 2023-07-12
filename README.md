@@ -51,8 +51,8 @@ configuration options.
 | buttonDecrement | jQuery element, HTML element, HTML string, or plain string | The contents of the decrement button                                                                                    | `'-'`         |
 | buttonIncrement | jQuery element, HTML element, HTML string, or plain string | The contents of the increment button                                                                                    | `'+'`         |
 | buttonPosition  | `'around'`, `'left'`, or `'right'`                         | The positions of the control buttons                                                                                    | `'around'`    |
-| onIncr          | false or function                                          | callback function to run on increment                                                                                   | false         |
-| onDecr          | false or function                                          | callback function to run on decrement                                                                                   | false         |
+| onDecrement     | false or function                                          | callback function to run on decrement                                                                                   | false         |
+| onIncrement     | false or function                                          | callback function to run on increment                                                                                   | false         |
 
 **Callback Examples**
 
@@ -60,7 +60,7 @@ Passed arguments are `$currentInput`: the selected input in a jQuery object, the
 
 ```js
 $('input[type="number"]').niceNumber({
-	onIncr: function ($currentInput, amount, settings) {
+	onIncrement: function ($currentInput, amount, settings) {
 		if (amount >= 100) {
 			$currentInput.classList.add('more-than-100');
 		} else {
