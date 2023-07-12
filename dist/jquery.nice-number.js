@@ -29,18 +29,15 @@
 			// Skip already initialized input
 			if ($currentInput.attr('data-nice-number-initialized')) return;
 
+			var isValidMax = maxValue !== '' && maxValue !== undefined && maxValue !== false;
+			var isValidMin = minValue !== '' && minValue !== undefined && minValue !== false;
+			
 			// Handle max and min values
-			if (
-				maxValue !== undefined &&
-				maxValue !== false
-			) {
+			if (isValidMax) {
 				attrMax = parseFloat(maxValue);
 			}
 
-			if (
-				minValue !== undefined &&
-				minValue !== false
-			) {
+			if (isValidMin) {
 				attrMin = parseFloat(minValue);
 			}
 
