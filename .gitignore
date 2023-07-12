@@ -56,7 +56,7 @@ typings/
 
 # Yarn 2 files and folders
 .yarn
-.yarnrc.yaml
+.yarnrc.yml
 
 # dotenv environment variables file
 .env
